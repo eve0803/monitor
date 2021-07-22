@@ -1,0 +1,24 @@
+{
+  "name": "monitor-service",
+  "version": "1.0.0",
+  "description": "monitor-service",
+  "main": "index.js",
+  "scripts": {
+    "serve": "ts-node-dev --respawn --transpile-only ./server/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compose": "^4.1.0",
+    "koa-logger-winston": "^0.0.2",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.6.5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
