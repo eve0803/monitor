@@ -5,25 +5,20 @@ const koaStatic = require("koa-static");
 const path = require("path");
 const Router = require('koa-router');
 const router = new Router();
-const Kcors = require("kcors");
+
 
 import sample from './src/router/sample';
 import myRouter from './src/router/index';
-import errorMiddleware from './src/middleware/error';
-import checkMiddleware from './src/middleware/check';
 
-const about = ctx => {
-  ctx.response.type = 'html';
-  ctx.response.body = '<a href="/">Index Page</a>';
-};
-
-const main = ctx => {
-  ctx.response.body = 'Hello World';
-};
+app.use(bodyParser());
+if(process.env.NODE_ENV === 'development'){
+  app.use(koaStatic(path.resolve(__dirname, "./public")));
+}else{
+  app.use(koaStatic(path.resolve(__dirname, "../public")));
+}
 // 路由配置
-router.get('/', main);
-router.get('/about', about);
-
+router.get("/", sample);
+router.get("/myRouter", myRouter);
 app
   .use(router.routes())    //吧路由都引入进来
   .use(router.allowedMethods());
